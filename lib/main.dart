@@ -7,11 +7,18 @@ void main() {
       ));
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
 
+  @override
+  State<MyApp> createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
   // This widget is the root of your application.
+  int ninjaLevel = 0;
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
       backgroundColor: Colors.grey[900],
       appBar: AppBar(
@@ -131,6 +138,16 @@ class MyApp extends StatelessWidget {
 
 
       //ninja id project
+      floatingActionButton: FloatingActionButton(
+        onPressed: (){
+          setState(() {
+            ninjaLevel+=1;
+          });
+        },
+        child:Icon(Icons.add),
+        backgroundColor:Colors.grey[850],
+        elevation:0.0,
+      ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30.0, 40.0, 30.0, 0.0),
         child: Column(
@@ -173,7 +190,7 @@ class MyApp extends StatelessWidget {
             ),
             SizedBox(height: 10),
             Text(
-              "8",
+              '$ninjaLevel',
               style: TextStyle(
                 color:Colors.amberAccent[200],
                 letterSpacing: 2.0,
@@ -206,4 +223,8 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+
 
